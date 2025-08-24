@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+int binary_search(int a,int* arr,int length,int start){
+    int c=(start+length)/2;
+    if(start>=length){
+        return -1;
+    }
+    if(arr[c]==a){
+        return c;
+    }
+    if(arr[c]>a){
+        return binary_search(a,arr,c,start);
+    }
+    return binary_search(a,arr,length,c+1);
+}
+
+int main(){
+    int a, n;
+    int* arr;
+    
+    cout<<"Enter n"<<endl;
+    cin>>n;
+    arr=new int[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    cout<<"Enter a"<<endl;
+    cin>>a;
+    cout<<binary_search(a,arr,n,0);
+    return 0;
+}
